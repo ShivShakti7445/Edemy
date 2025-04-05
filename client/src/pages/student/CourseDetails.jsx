@@ -20,6 +20,8 @@ import { toast } from 'react-toastify';
 
 const { backendUrl, currency, userData, calculateChapterTime, calculateCourseDuration, calculateRating, calculateNoOfLectures,getToken } = useContext(AppContext)
 
+
+
 const fetchCourseData = async () => {
   try {
     const { data } = await axios.get(backendUrl + '/api/course/' + id)
@@ -74,6 +76,7 @@ const toggleSection = (index) => {
         return toast.warn('Already Enrolled')
       }
       const token = await getToken();
+      
       const { data } = await axios.post(backendUrl + '/api/user/purchase',
         { courseId: courseData._id },
         { headers: { Authorization: `Bearer ${token}` } }
@@ -97,7 +100,7 @@ const toggleSection = (index) => {
     }
   }, [userData, courseData])
 
-
+  console.log(playerData)
 
   return courseData ? (
     <>
@@ -127,8 +130,8 @@ const toggleSection = (index) => {
             <p className='text-blue-600'>({courseData.courseRatings.length} {courseData.courseRatings.length > 1 ? 'ratings' : 'rating'})</p>
             <p>{courseData.enrolledStudents.length} {courseData.enrolledStudents.length > 1 ? 'students' : 'student'}</p>
           </div>
-          <p className='text-sm'>Course by <span className='text-blue-600 underline'>{courseData.educator.name}</span></p>
-          {/* <p className='text-sm'>Course by <span className='text-blue-600 underline'>{ShivShakti}</span></p> */}
+          {/* <p className='text-sm'>Course by <span className='text-blue-600 underline'>{courseData.educator.name}</span></p> */}
+          <p className='text-sm'>Course by <span className='text-blue-600 underline'>ShivShakti</span></p>
 
           <div className="pt-8 text-gray-800">
             <h2 className="text-xl font-semibold">Course Structure</h2>
@@ -155,7 +158,7 @@ const toggleSection = (index) => {
                             <p>{lecture.lectureTitle}</p>
                             <div className='flex gap-2'>
                               {lecture.isPreviewFree && <p onClick={() => setPlayerData({
-                                videoId: lecture.lectureUrl.split('/').pop()
+                                videoId: lecture.lectureUrl.split('=')[1].substring(0, 11)
                               })} className='text-blue-500 cursor-pointer'>Preview</p>}
                               <p>{humanizeDuration(lecture.lectureDuration * 60 * 1000, { units: ['h', 'm'] })}</p>
                             </div>
@@ -219,7 +222,6 @@ const toggleSection = (index) => {
                 <p>{calculateNoOfLectures(courseData)} lessons</p>
               </div>
             </div>
-            {/* onClick={enrollCourse} */}
             <button onClick={enrollCourse} className="md:mt-6 mt-4 w-full py-3 rounded bg-blue-600 text-white font-medium">
               {isAlreadyEnrolled ? "Already Enrolled" : "Enroll Now"}
             </button>
