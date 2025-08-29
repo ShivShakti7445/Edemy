@@ -11,6 +11,7 @@ export const checkDBConnection = (req, res) => {
             statusCode = 500;
             break;
         case 1:
+            
             statusMessage = 'MongoDB is connected';
             statusCode = 200;
             break;
