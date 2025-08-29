@@ -82,14 +82,6 @@ and many more, including clean code structure, reusability, and modern DX.
     <td><img src="https://github.com/user-attachments/assets/247ca74f-1508-4069-8d12-e01ec46d7951" width="400" style="border-radius: 20px;"></td>
     <td><img src="https://github.com/user-attachments/assets/04bb049a-546d-4e6f-8886-ae7cac83e85e" width="400" style="border-radius: 20px;"></td>
   </tr>
-  <tr>
-    <td><img src="https://github.com/user-attachments/assets/65eca7b2-ecc6-4048-8429-7ca522e88875" width="400" style="border-radius: 20px;"></td>
-    <td><img src="https://github.com/user-attachments/assets/02dda3ae-d630-4b74-a987-02680760af56" width="400" style="border-radius: 20px;"></td>
-  </tr>
-  <tr>
-    <td><img src="https://github.com/user-attachments/assets/69a2f5c4-b721-4cd4-9f9f-fc9e84c0b209" width="400" style="border-radius: 20px;"></td>
-    <td><img src="https://github.com/user-attachments/assets/93000cbc-7651-4764-b3df-fd6067b7ee96" width="400" style="border-radius: 20px;"></td>
-  </tr>
 </table>
 
 ## 💡 Author
