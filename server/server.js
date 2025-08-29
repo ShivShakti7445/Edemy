@@ -8,6 +8,7 @@ import educatorRouter from './routes/educatorRoutes.js'
 import { clerkMiddleware } from '@clerk/express'
 import courseRouter from './routes/courseRoute.js'
 import userRouter from './routes/userRoutes.js'
+import healthCheckRouter from './routes/healthCheckRoute.js'
 
 // Initialize Express
 const app = express()
@@ -22,6 +23,7 @@ app.use(clerkMiddleware())
 
 //route
 app.get('/', (req, res) => res.send("API Working"))
+app.use('/health-check', healthCheckRouter)
 app.use('/api/educator', express.json(), educatorRouter)
 app.post('/clerk', express.json() , clerkWebhooks) 
 app.use('/api/course', express.json(), courseRouter)
