@@ -1,8 +1,9 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
-import SideBar from '../../components/educator/Sidebar'
+
 import Navbar from '../../components/educator/Navbar'
 import Footer from '../../components/educator/Footer'
+import Sidebar from '../../components/educator/Sidebar'
 
 const Educator = () => {
     return (
