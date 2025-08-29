@@ -6,3 +6,4 @@ const healthCheckRouter = express.Router();
 healthCheckRouter.get('/', checkDBConnection);
 
 export default healthCheckRouter;
+
