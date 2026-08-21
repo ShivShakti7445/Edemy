@@ -1,11 +1,17 @@
-import React from 'react'
-import { Outlet } from 'react-router-dom'
-
+import React, { useContext } from 'react'
+import { Outlet, Navigate } from 'react-router-dom'
 import Navbar from '../../components/educator/Navbar'
 import Footer from '../../components/educator/Footer'
 import Sidebar from '../../components/educator/Sidebar'
+import { AppContext } from '../../context/AppContext'
 
 const Educator = () => {
+    const { isEducator } = useContext(AppContext)
+
+    if (!isEducator) {
+        return <Navigate to="/" replace />
+    }
+
     return (
         <div className="text-default min-h-screen bg-white">
             <Navbar />
@@ -21,3 +27,4 @@ const Educator = () => {
 }
 
 export default Educator
+

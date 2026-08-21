@@ -38,8 +38,10 @@ export const AppContextProvider = (props) => {
 
 // Fetch UserData 
 const fetchUserData = async () => {
-    if (user .publicMetadata.role === 'educator') {
+    if (user?.publicMetadata?.role === 'educator') {
         setIsEducator(true)
+    } else {
+        setIsEducator(false)
     }
     try {
         const token = await getToken();
@@ -56,6 +58,7 @@ const fetchUserData = async () => {
     }
 
 }
+
 
     // calculate rating
     const calculateRating = (course) => {
