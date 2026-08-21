@@ -1,44 +1,59 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&family=Outfit:wght@300..800&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-*{
-    font-family: Outfit;
+* {
+  font-family: 'Plus Jakarta Sans', 'Outfit', sans-serif;
 }
 
 @layer base {
-    html {
-      scroll-behavior: smooth;
-    }
+  html {
+    scroll-behavior: smooth;
   }
-  
-  ::-webkit-scrollbar{
-    display: none;
+  body {
+    @apply bg-slate-50/50 text-slate-800 antialiased selection:bg-blue-500 selection:text-white;
   }
-  
-  .rich-text { font-size: 15px; color: #7A7B7D; }
-  
-  .rich-text p { margin-bottom: 16px; }
-  
-  .rich-text h1 { font-size: 36px; font-weight: 800; color: #252525; margin: 32px 0; }
-  
-  .rich-text h2 { font-size: 22px; font-weight: 700; color: #252525; margin: 24px 0; }
-  
-  .rich-text h3 { font-size: 18px; font-weight: 600; color: #333333; margin: 20px 0; }
-  
-  .rich-text h4 { font-size: 16px; font-weight: 500; color: #444444; margin: 16px 0; }
-  
-  .rich-text h5 { font-size: 14px; font-weight: 400; color: #555555; margin: 12px 0; }
-  
-  .rich-text h6 { font-size: 12px; font-weight: 400; color: #666666; margin: 8px 0; }
-  
-  .rich-text strong { font-weight: 700; }
-  
-  .rich-text ol { margin-left: 30px; list-style-type: decimal; }
-  
-  .rich-text ul { margin-left: 30px; list-style-type: disc; }
-  
-  .rich-text li { margin-bottom: 8px; }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+.rich-text { font-size: 15px; color: #475569; line-height: 1.7; }
+.rich-text p { margin-bottom: 16px; }
+.rich-text h1 { font-size: 32px; font-weight: 800; color: #0f172a; margin: 28px 0 16px 0; }
+.rich-text h2 { font-size: 22px; font-weight: 700; color: #0f172a; margin: 24px 0 12px 0; }
+.rich-text h3 { font-size: 18px; font-weight: 600; color: #1e293b; margin: 20px 0 10px 0; }
+.rich-text h4 { font-size: 16px; font-weight: 600; color: #334155; margin: 16px 0 8px 0; }
+.rich-text strong { font-weight: 700; color: #0f172a; }
+.rich-text ol { margin-left: 24px; list-style-type: decimal; }
+.rich-text ul { margin-left: 24px; list-style-type: disc; }
+.rich-text li { margin-bottom: 8px; }
+
+/* Custom animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}

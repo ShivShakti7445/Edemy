@@ -8,18 +8,42 @@ const CoursesSection = () => {
   const { allCourses } = useContext(AppContext)
 
   return (
-    <div className="py-16 md:px-40 px-8">
-      <h2 className="text-3xl font-medium text-gray-800">Learn from the best</h2>
-      <p className="md:text-base text-sm text-gray-500 mt-3">
-        Discover our top-rated courses across various categories. From coding and design to < br /> business and wellness, our courses are crafted to deliver results.
-      </p>
-      {/* course caard of 4 size */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 px-4 md:px-0 md:my-16 my-10 gap-4">
+    <section className="py-20 md:px-36 px-6 max-w-7xl mx-auto">
+      <div className="text-center md:text-left flex flex-col md:flex-row items-center justify-between gap-6 mb-12">
+        <div>
+          <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
+            Learn from the best
+          </h2>
+          <p className="text-slate-500 text-sm md:text-base mt-2 max-w-xl">
+            Discover our top-rated courses across various categories. From coding and design to business and wellness, our courses are crafted to deliver real results.
+          </p>
+        </div>
+        <Link 
+          to={'/course-list'} 
+          onClick={() => scrollTo(0, 0)} 
+          className="whitespace-nowrap px-6 py-3 rounded-full text-sm font-semibold text-blue-600 border border-blue-200 bg-blue-50/50 hover:bg-blue-600 hover:text-white transition-all shadow-xs hover:shadow-md active:scale-95"
+        >
+          Explore All Courses →
+        </Link>
+      </div>
+
+      {/* course cards grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {allCourses.slice(0, 4).map((course, index) => <CourseCard key={index} course={course} />)}
       </div>
-      <Link to={'/course-list'} onClick={() => scrollTo(0, 0)} className="text-gray-500 border border-gray-500/30 px-10 py-3 rounded">Show all courses</Link>
-    </div>
+
+      <div className="mt-12 text-center md:hidden">
+        <Link 
+          to={'/course-list'} 
+          onClick={() => scrollTo(0, 0)} 
+          className="inline-block px-8 py-3 rounded-full text-sm font-semibold text-white bg-blue-600 shadow-md"
+        >
+          Show all courses
+        </Link>
+      </div>
+    </section>
   );
 };
 
 export default CoursesSection;
+

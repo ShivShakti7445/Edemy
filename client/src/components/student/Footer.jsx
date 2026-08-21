@@ -1,45 +1,60 @@
 import React from 'react';
 import { assets } from '../../assets/assets';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 md:px-36 text-left w-full mt-10">
-      <div className="flex flex-col md:flex-row items-start px-8 md:px-0 justify-center gap-10 md:gap-32 py-10 border-b border-white/30">
+    <footer className="bg-slate-900 text-slate-400 w-full mt-20">
+      <div className="max-w-7xl mx-auto px-6 md:px-14 py-16 grid grid-cols-1 md:grid-cols-3 gap-12 border-b border-slate-800">
 
-        <div className="flex flex-col md:items-start items-center w-full">
-          <img src={assets.logo_dark} alt="logo" />
-          <p className="mt-6 text-center md:text-left text-sm text-white/80">
-          <span className="fw-bold"> Edemy – Your Learning Hub!</span><br /> Enroll in courses, learn at your pace, and grow your skills. Educators can share knowledge by uploading courses. Simple, flexible, and accessible for all!
+        <div className="space-y-4">
+          <img src={assets.logo_dark} alt="Edemy Logo" className="w-32" />
+          <p className="text-sm leading-relaxed text-slate-400 max-w-sm">
+            <strong className="text-slate-200">Edemy – Your Learning Hub!</strong><br />
+            Enroll in world-class courses, learn at your own pace, and master in-demand skills. Built for students and educators worldwide.
           </p>
         </div>
 
-        <div className="flex flex-col md:items-start items-center w-full">
-          <h2 className="font-semibold text-white mb-5">Company</h2>
-          <ul className="flex md:flex-col w-full justify-between text-sm text-white/80 md:space-y-2">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About us</a></li>
-            <li><a href="#">Contact us</a></li>
-            <li><a href="#">Privacy policy</a></li>
+        <div className="space-y-4">
+          <h3 className="text-base font-bold text-slate-100 tracking-wider">Quick Links</h3>
+          <ul className="space-y-2.5 text-sm font-medium">
+            <li><Link to="/" onClick={() => scrollTo(0, 0)} className="hover:text-blue-400 transition-colors">Home</Link></li>
+            <li><Link to="/course-list" onClick={() => scrollTo(0, 0)} className="hover:text-blue-400 transition-colors">All Courses</Link></li>
+            <li><Link to="/my-enrollments" onClick={() => scrollTo(0, 0)} className="hover:text-blue-400 transition-colors">My Enrollments</Link></li>
+            <li><a href="#" className="hover:text-blue-400 transition-colors">Privacy Policy</a></li>
           </ul>
         </div>
 
-        <div className="hidden md:flex flex-col items-start w-full">
-          <h2 className="font-semibold text-white mb-5">Subscribe to our newsletter</h2>
-          <p className="text-sm text-white/80">
-            The latest news, articles, and resources, sent to your inbox weekly.
+        <div className="space-y-4">
+          <h3 className="text-base font-bold text-slate-100 tracking-wider">Stay Updated</h3>
+          <p className="text-sm text-slate-400 leading-relaxed">
+            Get the latest courses, tech insights, and learning resources delivered weekly.
           </p>
-          <div className="flex items-center gap-2 pt-4">
-            <input className="border border-gray-500/30 bg-gray-800 text-gray-500 placeholder-gray-500 outline-none w-64 h-9 rounded px-2 text-sm" type="email" placeholder="Enter your email" />
-            <button className="bg-blue-600 w-24 h-9 text-white rounded">Subscribe</button>
-          </div>
+          <form onSubmit={(e) => e.preventDefault()} className="flex items-center gap-2 pt-1">
+            <input 
+              className="bg-slate-800/90 border border-slate-700/80 text-slate-200 placeholder-slate-500 outline-none flex-1 h-10 rounded-full px-4 text-sm focus:border-blue-500 transition-colors" 
+              type="email" 
+              placeholder="Enter your email address" 
+            />
+            <button className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold text-xs px-5 h-10 rounded-full transition-all shadow-md">
+              Subscribe
+            </button>
+          </form>
         </div>
 
       </div>
-      <p className="py-4 text-center text-xs md:text-sm text-white/60">
-        Copyright 2024 © Edemy. All Right Reserved.
-      </p>
+
+      <div className="max-w-7xl mx-auto px-6 py-6 text-center text-xs text-slate-500 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p>Copyright 2026 © Edemy. All Rights Reserved.</p>
+        <div className="flex gap-6">
+          <a href="#" className="hover:text-slate-400">Terms of Service</a>
+          <a href="#" className="hover:text-slate-400">Privacy Policy</a>
+          <a href="#" className="hover:text-slate-400">Cookie Settings</a>
+        </div>
+      </div>
     </footer>
   );
 };
 
 export default Footer;
+
