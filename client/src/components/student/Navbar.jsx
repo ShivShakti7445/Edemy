@@ -77,16 +77,15 @@ const Navbar = () => {
                       📖 My Enrollments
                     </Link>
 
-                    <button 
-                      onClick={handleEducatorClick}
-                      className={`px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide transition-all ${
-                        location.pathname.startsWith('/educator') || isEducator
-                          ? 'bg-indigo-600 text-white shadow-xs hover:bg-indigo-700'
-                          : 'bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-300/80 shadow-xs'
-                      }`}
-                    >
-                      🎓 Educator {isEducator ? 'Dashboard' : ''}
-                    </button>
+                    {/* ONLY show Educator Dashboard button if user is an Educator */}
+                    {isEducator && (
+                      <button 
+                        onClick={() => navigate('/educator')}
+                        className={`px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide transition-all bg-indigo-600 text-white shadow-xs hover:bg-indigo-700 cursor-pointer`}
+                      >
+                        🎓 Educator Dashboard
+                      </button>
+                    )}
 
                     <UserButton />
                   </div>
@@ -118,9 +117,11 @@ const Navbar = () => {
                 <Link to='/my-enrollments' className="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-slate-100 border border-slate-200">
                   Enrollments
                 </Link>
-                <button onClick={handleEducatorClick} className="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-indigo-600 text-white">
-                  Educator
-                </button>
+                {isEducator && (
+                  <button onClick={() => navigate('/educator')} className="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-indigo-600 text-white">
+                    Educator
+                  </button>
+                )}
                 <UserButton />
               </div>
             ) : (
@@ -140,6 +141,7 @@ const Navbar = () => {
               </div>
             )}
           </div>
+
 
       </nav>
 
