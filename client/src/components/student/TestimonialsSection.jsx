@@ -4,7 +4,8 @@ import { assets, dummyTestimonial } from '../../assets/assets';
 const TestimonialsSection = () => {
 
   return (
-    <section className="py-16 md:px-36 px-6 max-w-7xl mx-auto">
+    <section className="py-16 px-4 sm:px-8 md:px-12 lg:px-16 max-w-7xl mx-auto w-full">
+
       <div className="text-center max-w-2xl mx-auto mb-14">
         <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">What Our Learners Say</h2>
         <p className="md:text-base text-sm text-slate-500 mt-3 leading-relaxed">

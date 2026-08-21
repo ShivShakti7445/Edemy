@@ -29,7 +29,8 @@
 
     return (
         <>
-            <div className="relative md:px-36 px-8 pt-20 text-left">
+            <div className="relative px-4 sm:px-8 md:px-12 lg:px-16 max-w-7xl mx-auto w-full pt-12 text-left">
+
                 <div className='flex md:flex-row flex-col gap-6 items-start justify-between w-full'>
                     <div>
                         <h1 className='text-4xl font-semibold text-gray-800'>Course List</h1>

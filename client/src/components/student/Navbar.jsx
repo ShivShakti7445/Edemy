@@ -37,8 +37,9 @@ const Navbar = () => {
   }
 
   return (
-    <nav className={`sticky top-0 z-50 backdrop-blur-md bg-white/85 border-b border-slate-200/80 transition-all duration-300 shadow-sm flex items-center justify-between px-4 sm:px-10 md:px-14 lg:px-36 py-3.5`}>
+    <nav className={`sticky top-0 z-50 backdrop-blur-md bg-white/85 border-b border-slate-200/80 transition-all duration-300 shadow-sm flex items-center justify-between px-4 sm:px-8 md:px-12 lg:px-16 max-w-7xl mx-auto w-full py-3.5`}>
         <img onClick={() => navigate('/')} src={assets.logo} alt='Logo' className='w-28 lg:w-32 cursor-pointer hover:opacity-90 transition-opacity' /> 
+
         
         {/* Desktop View */}
         <div className="md:flex hidden items-center gap-6 text-slate-600 font-medium text-sm">

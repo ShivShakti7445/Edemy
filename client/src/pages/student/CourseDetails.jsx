@@ -104,7 +104,8 @@ const toggleSection = (index) => {
 
   return courseData ? (
     <>
-      <div className="flex md:flex-row flex-col-reverse gap-10 relative items-start justify-between md:px-36 px-8 md:pt-20 pt-10 text-left">
+      <div className="flex md:flex-row flex-col-reverse gap-10 relative items-start justify-between px-4 sm:px-8 md:px-12 lg:px-16 max-w-7xl mx-auto w-full md:pt-16 pt-10 text-left">
+
         <div className="absolute top-0 left-0 w-full h-section-height -z-1 bg-gradient-to-b from-cyan-100/70"></div>
          
          

@@ -120,7 +120,8 @@ const Player = () => {
 
   return  courseData ? (
     <>
-    <div className='p-4 sm:p-10 flex flex-col-reverse md:grid md:grid-cols-2 gap-10 md:px-36'>
+    <div className='py-8 px-4 sm:px-8 md:px-12 lg:px-16 max-w-7xl mx-auto w-full flex flex-col-reverse md:grid md:grid-cols-2 gap-10'>
+
       {/* left side player */}
       <div className=" text-gray-800" >
         <h2 className="text-xl font-semibold">Course Structure</h2>

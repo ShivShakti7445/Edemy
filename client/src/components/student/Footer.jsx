@@ -5,7 +5,8 @@ import { Link } from 'react-router-dom';
 const Footer = () => {
   return (
     <footer className="bg-slate-900 text-slate-400 w-full mt-20">
-      <div className="max-w-7xl mx-auto px-6 md:px-14 py-16 grid grid-cols-1 md:grid-cols-3 gap-12 border-b border-slate-800">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 md:px-12 lg:px-16 w-full py-16 grid grid-cols-1 md:grid-cols-3 gap-12 border-b border-slate-800">
+
 
         <div className="space-y-4">
           <img src={assets.logo_dark} alt="Edemy Logo" className="w-32" />
