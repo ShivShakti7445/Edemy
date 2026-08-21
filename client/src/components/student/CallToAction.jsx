@@ -6,7 +6,8 @@ const CallToAction = () => {
   const navigate = useNavigate();
 
   return (
-    <section className="py-16 px-4 sm:px-8 md:px-12 lg:px-16 max-w-7xl mx-auto w-full">
+    <section className="py-8 md:py-12 px-4 sm:px-8 md:px-12 lg:px-16 max-w-7xl mx-auto w-full">
+
 
       <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-700 text-white p-8 md:p-16 text-center shadow-2xl">
         {/* Background glow overlay */}

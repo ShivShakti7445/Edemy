@@ -46,7 +46,8 @@ const MyEnrollments = () => {
 
   return ( 
     <div className="min-h-screen flex flex-col justify-between bg-slate-50/50">
-        <div className='px-4 sm:px-8 md:px-12 lg:px-16 pt-12 pb-16 max-w-7xl mx-auto w-full'>
+        <div className='px-4 sm:px-8 md:px-12 lg:px-16 pt-8 md:pt-10 pb-16 max-w-7xl mx-auto w-full'>
+
 
 
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-10 pb-6 border-b border-slate-200">

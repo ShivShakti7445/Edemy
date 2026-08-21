@@ -4,12 +4,12 @@ import SearchBar from '../../components/student/SearchBar';
 
 const Hero = () => {
   return (
-    <div className="relative flex flex-col items-center justify-center w-full md:pt-32 pt-20 pb-20 px-7 md:px-0 space-y-7 text-center bg-gradient-to-b from-blue-50/80 via-indigo-50/20 to-white overflow-hidden">
+    <div className="relative flex flex-col items-center justify-center w-full md:pt-12 pt-8 pb-10 px-6 md:px-0 space-y-5 text-center bg-gradient-to-b from-blue-50/80 via-indigo-50/20 to-white overflow-hidden">
       {/* Background glow circle */}
-      <div className="absolute top-12 left-1/2 -translate-x-1/2 w-[500px] h-[300px] bg-gradient-to-r from-blue-400/15 to-violet-400/15 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-6 left-1/2 -translate-x-1/2 w-[500px] h-[250px] bg-gradient-to-r from-blue-400/15 to-violet-400/15 rounded-full blur-3xl pointer-events-none" />
 
       {/* Pill Badge */}
-      <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50/90 border border-blue-200/80 text-blue-700 text-xs font-semibold tracking-wide shadow-xs">
+      <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-blue-50/90 border border-blue-200/80 text-blue-700 text-xs font-semibold tracking-wide shadow-xs">
         <span className="flex h-2 w-2 rounded-full bg-blue-600 animate-pulse" />
         Over 100,000+ Students Learning Worldwide
       </div>
@@ -32,12 +32,13 @@ const Hero = () => {
       </p>
 
       {/* Search bar button */}
-      <div className="w-full flex justify-center pt-2">
+      <div className="w-full flex justify-center pt-1">
         <SearchBar />
       </div>
     </div>
   );
 };
+
 
 export default Hero;
 
