@@ -2,6 +2,8 @@ import User from "../models/User.js"
 import { Purchase } from "../models/Purchase.js"
 import stripe from "stripe"
 import Course from "../models/Course.js"
+import { completePurchase } from "./webhooks.js"
+
 // Get User Data
 export const getUserData = async (req, res) => {
     try {
@@ -20,6 +22,13 @@ export const getUserData = async (req, res) => {
 export const userEnrolledCourses = async (req, res) => {
     try {
         const userId = req.auth.userId
+        
+        // Auto-complete and sync any purchases made by this user
+        const userPurchases = await Purchase.find({ userId });
+        for (const purchase of userPurchases) {
+            await completePurchase(purchase._id);
+        }
+
         const userData = await User.findById(userId)
             .populate('enrolledCourses')
         if (!userData) {
@@ -31,6 +40,7 @@ export const userEnrolledCourses = async (req, res) => {
     }
 
 }
+
 
 
 // Purchase Course 

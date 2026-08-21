@@ -3,9 +3,10 @@ import { AppContext } from '../../context/AppContext'
 import { Line } from 'rc-progress';
 import Footer from '../../components/student/Footer';
 import { toast } from 'react-toastify';
+import axios from 'axios';
+
 const MyEnrollments = () => {
   const { userData, enrolledCourses, fetchUserEnrolledCourses, navigate, backendUrl, getToken, calculateCourseDuration, calculateNoOfLectures } = useContext(AppContext)
-//   const {enrolledCourses, calculateCourseDuration, navigate } = useContext(AppContext)
   const [progressArray, setProgressArray] = useState([]);
 
   const getCourseProgress = async () => {
@@ -28,11 +29,12 @@ const MyEnrollments = () => {
             })
         );
 
-        setProgressData(tempProgressArray);
+        setProgressArray(tempProgressArray);
     } catch (error) {
         toast.error(error.message);
     }
 };
+
 
 
     useEffect(() => {

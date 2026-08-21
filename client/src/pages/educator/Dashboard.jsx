@@ -78,16 +78,17 @@ const Dashboard = () => {
                     <td className="px-4 py-3 text-center hidden sm:table-cell">{index + 1}</td>
                     <td className="md:px-4 px-2 py-3 flex items-center space-x-3">
                       <img
-                        src={item.student.imageUrl}
+                        src={item.student?.imageUrl || assets.profile_img}
                         alt="Profile"
                         className="w-9 h-9 rounded-full"
                       />
-                      <span className="truncate">{item.student.name}</span>
+                      <span className="truncate">{item.student?.name || 'Student'}</span>
                     </td>
                     <td className="px-4 py-3 truncate">{item.courseTitle}</td>
                   </tr>
                 ))}
               </tbody>
+
             </table>
           </div>
         </div>
