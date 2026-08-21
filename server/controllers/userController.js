@@ -3,6 +3,8 @@ import { Purchase } from "../models/Purchase.js"
 import stripe from "stripe"
 import Course from "../models/Course.js"
 import { completePurchase } from "./webhooks.js"
+import { CourseProgress } from "../models/CourseProgress.js"
+
 
 // Get User Data
 export const getUserData = async (req, res) => {

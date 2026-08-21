@@ -2,13 +2,14 @@ import React, { useContext, useEffect, useState } from 'react'
 import { AppContext } from '../../context/AppContext'
 import { useParams } from 'react-router-dom'
 import humanizeDuration from 'humanize-duration'
-import { Rating } from 'react-simple-star-rating'
+import Rating from '../../components/student/Rating'
 import { assets } from '../../assets/assets'
 import YouTube from 'react-youtube'
 import Footer from '../../components/student/Footer'
 import axios from 'axios'
 import { toast } from 'react-toastify'
 import Loading from '../../components/student/Loading'
+
 
 const Player = () => {
   const { enrolledCourses, backendUrl, getToken, calculateChapterTime, userData, fetchUserEnrolledCourses } = useContext(AppContext)
