@@ -3,13 +3,11 @@ import Loading from '../../components/student/Loading'
 import { AppContext } from '../../context/AppContext'
 import axios from 'axios';
 import { toast } from 'react-toastify';
-
+import { Link } from 'react-router-dom';
 
 const MyCourses = () => {
   const { backendUrl, isEducator, currency, getToken } = useContext(AppContext)
-  // const {currency,allCourses } = useContext(AppContext)
   const [courses, setCourses] = useState(null)
-
 
   const fetchEducatorCourses = async () => {
     try {
@@ -27,42 +25,81 @@ const MyCourses = () => {
     }
   }, [isEducator])
 
-
-
   return courses ? (
-    <div className="h-screen flex flex-col items-start justify-between md:p-8 md:pb-0 p-4 pt-8 pb-0">
-      <div className='w-full'>
-        <h2 className="pb-4 text-lg font-medium">My Courses</h2>
-        <div className="flex flex-col items-center max-w-4xl w-full overflow-hidden rounded-md bg-white border border-gray-500/20">
-          <table className="md:table-auto table-fixed w-full overflow-hidden">
-            <thead className="text-gray-900 border-b border-gray-500/20 text-sm text-left">
+    <div className="min-h-screen bg-slate-50/50 p-6 md:p-10 w-full max-w-7xl space-y-6">
+      
+      {/* Page Header */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 pb-5">
+        <div>
+          <h1 className="text-3xl font-extrabold text-slate-900 tracking-tight">My Published Courses</h1>
+          <p className="text-slate-500 text-sm mt-1">Manage and track performance for all your active courses.</p>
+        </div>
+
+        <Link 
+          to="/educator/add-course" 
+          className="self-start sm:self-auto px-5 py-2.5 rounded-full text-xs font-semibold text-white bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 transition-all shadow-md hover:shadow-lg active:scale-95"
+        >
+          + Add New Course
+        </Link>
+      </div>
+
+      {courses.length === 0 ? (
+        <div className="bg-white rounded-3xl border border-slate-200 p-12 text-center shadow-xs">
+          <p className="text-slate-500 font-medium mb-4">You haven't published any courses yet.</p>
+          <Link 
+            to="/educator/add-course" 
+            className="inline-block px-6 py-2.5 rounded-full bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs shadow-md"
+          >
+            Create Your First Course
+          </Link>
+        </div>
+      ) : (
+        <div className="bg-white rounded-2xl border border-slate-200/80 overflow-hidden shadow-xs">
+          <table className="w-full text-left border-collapse">
+            <thead className="bg-slate-50/80 text-slate-700 text-xs font-bold uppercase tracking-wider border-b border-slate-200">
               <tr>
-                <th className="px-4 py-3 font-semibold truncate">All Courses</th>
-                <th className="px-4 py-3 font-semibold truncate">Earnings</th>
-                <th className="px-4 py-3 font-semibold truncate">Students</th>
-                <th className="px-4 py-3 font-semibold truncate">Published On</th>
+                <th className="px-6 py-4">Course</th>
+                <th className="px-6 py-4">Total Revenue</th>
+                <th className="px-6 py-4">Enrolled Students</th>
+                <th className="px-6 py-4">Published Date</th>
               </tr>
             </thead>
-            <tbody className="text-sm text-gray-500">
-              {courses.map((course) => (
-                <tr key={course._id} className="border-b border-gray-500/20">
-                  <td className="md:px-4 pl-2 md:pl-4 py-3 flex items-center space-x-3 truncate">
-                    <img src={course.courseThumbnail} alt="Course Image" className="w-16" />
-                    <span className="truncate hidden md:block">{course.courseTitle}</span>
-                  </td>
-                  <td className="px-4 py-3">{currency} {Math.floor(course.enrolledStudents.length * (course.coursePrice - course.discount * course.coursePrice / 100))}</td>
-                  <td className="px-4 py-3">{course.enrolledStudents.length}</td>
-                  <td className="px-4 py-3">
-                    {new Date(course.createdAt).toLocaleDateString()}
-                  </td>
-                </tr>
-              ))}
+            <tbody className="divide-y divide-slate-100 text-sm">
+              {courses.map((course) => {
+                const totalEarnings = Math.floor(course.enrolledStudents.length * (course.coursePrice - course.discount * course.coursePrice / 100));
+                
+                return (
+                  <tr key={course._id} className="hover:bg-slate-50/60 transition-colors">
+                    <td className="px-6 py-4">
+                      <div className="flex items-center gap-4">
+                        <img 
+                          src={course.courseThumbnail} 
+                          alt="Course Thumbnail" 
+                          className="w-20 aspect-video rounded-lg object-cover shadow-xs border border-slate-100" 
+                        />
+                        <span className="font-bold text-slate-800 line-clamp-1 max-w-xs">{course.courseTitle}</span>
+                      </div>
+                    </td>
+                    <td className="px-6 py-4 font-extrabold text-emerald-600">
+                      {currency}{totalEarnings}
+                    </td>
+                    <td className="px-6 py-4 font-semibold text-slate-700">
+                      <span className="px-3 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200/60 text-xs">
+                        👥 {course.enrolledStudents.length} Students
+                      </span>
+                    </td>
+                    <td className="px-6 py-4 text-slate-500 font-medium whitespace-nowrap">
+                      📅 {new Date(course.createdAt).toLocaleDateString()}
+                    </td>
+                  </tr>
+                )
+              })}
             </tbody>
           </table>
         </div>
-      </div>
+      )}
     </div>
-  ):<Loading />
+  ) : <Loading />
 }
 
-export default MyCourses
+export default MyCourses

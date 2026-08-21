@@ -5,7 +5,6 @@ import { assets } from '../../assets/assets';
 import { AppContext } from '../../context/AppContext';
 
 const Sidebar = () => {
-
   const { isEducator } = useContext(AppContext)
 
   const menuItems = [
@@ -16,25 +15,33 @@ const Sidebar = () => {
   ];
 
   return isEducator && (
-    <div className='md:w-64 w-16 border-r min-h-screen text-base border-gray-500 py-2 flex flex-col'>
-      {menuItems.map((item) => (
-        <NavLink
-          to={item.path}
-          key={item.name}
-          end={item.path === '/educator'} // Add end prop for the Dashboard link
-          className={({ isActive }) =>
-            `flex items-center md:flex-row flex-col md:justify-start justify-center py-3.5 md:px-10 gap-3 ${isActive
-              ? 'bg-indigo-50 border-r-[6px] border-indigo-500/90'
-              : 'hover:bg-gray-100/90 border-r-[6px] border-white hover:border-gray-100/90'
-            }`
-          }
-        >
-          <img src={item.icon} alt="" className="w-6 h-6" />
-          <p className='md:block hidden text-center'>{item.name}</p>
-        </NavLink>
-      ))}
-    </div>
+    <aside className='w-16 md:w-64 bg-slate-900 text-slate-300 min-h-screen p-3 md:p-4 flex flex-col gap-2 shadow-lg border-r border-slate-800 shrink-0'>
+      <div className="hidden md:block px-4 py-2 mb-2">
+        <p className="text-[11px] font-bold uppercase tracking-widest text-slate-500">Navigation</p>
+      </div>
+
+      <div className="flex flex-col gap-1.5">
+        {menuItems.map((item) => (
+          <NavLink
+            to={item.path}
+            key={item.name}
+            end={item.path === '/educator'}
+            className={({ isActive }) =>
+              `flex items-center md:justify-start justify-center py-3 px-3 md:px-4 rounded-xl gap-3.5 font-semibold text-xs md:text-sm transition-all duration-200 ${
+                isActive
+                  ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md'
+                  : 'text-slate-400 hover:text-slate-100 hover:bg-slate-800/80'
+              }`
+            }
+          >
+            <img src={item.icon} alt={item.name} className="w-5 h-5 brightness-200 invert opacity-90" />
+            <span className='md:block hidden truncate'>{item.name}</span>
+          </NavLink>
+        ))}
+      </div>
+    </aside>
   );
 };
 
 export default Sidebar;
+
