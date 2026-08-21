@@ -61,44 +61,50 @@ const Navbar = () => {
           <img onClick={() => navigate('/')} src={assets.logo} alt='Logo' className='w-28 lg:w-32 cursor-pointer hover:opacity-90 transition-opacity' /> 
           
           {/* Desktop View */}
-          <div className="md:flex hidden items-center gap-6 text-slate-600 font-medium text-sm">
-              <div className="flex items-center gap-3">
-                {/* Student Option */}
-                <Link 
-                  to={user ? '/my-enrollments' : '/'} 
-                  className={`px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide transition-all ${
-                    location.pathname === '/my-enrollments' || location.pathname === '/'
-                      ? 'bg-blue-50 text-blue-700 border border-blue-200'
-                      : 'text-slate-600 hover:text-blue-600 hover:bg-slate-100'
-                  }`}
-                >
-                  📖 Student {user ? '(My Enrollments)' : ''}
-                </Link>
-
-                {/* Educator Option */}
-                <button 
-                  onClick={handleEducatorClick}
-                  className={`px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide transition-all ${
-                    location.pathname.startsWith('/educator') || isEducator
-                      ? 'bg-indigo-600 text-white shadow-xs hover:bg-indigo-700'
-                      : 'bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-300/80 shadow-xs'
-                  }`}
-                >
-                  🎓 Educator {isEducator ? 'Dashboard' : ''}
-                </button>
-              </div>
-
-              {/* User Authentication Button */}
+          <div className="md:flex hidden items-center gap-4 text-slate-600 font-medium text-sm">
               {
-                user
-                ? <UserButton />
-                : (
-                  <div className="flex items-center gap-2">
-                    <button 
-                      onClick={() => openSignIn()} 
-                      className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold text-xs tracking-wider uppercase px-5 py-2.5 rounded-full shadow-md hover:shadow-lg transition-all active:scale-95 cursor-pointer"
+                user ? (
+                  /* Logged In View */
+                  <div className="flex items-center gap-4">
+                    <Link 
+                      to='/my-enrollments' 
+                      className={`px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide transition-all ${
+                        location.pathname === '/my-enrollments'
+                          ? 'bg-blue-50 text-blue-700 border border-blue-200'
+                          : 'text-slate-600 hover:text-blue-600 hover:bg-slate-100'
+                      }`}
                     >
-                      Sign In / Sign Up
+                      📖 My Enrollments
+                    </Link>
+
+                    <button 
+                      onClick={handleEducatorClick}
+                      className={`px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide transition-all ${
+                        location.pathname.startsWith('/educator') || isEducator
+                          ? 'bg-indigo-600 text-white shadow-xs hover:bg-indigo-700'
+                          : 'bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-300/80 shadow-xs'
+                      }`}
+                    >
+                      🎓 Educator {isEducator ? 'Dashboard' : ''}
+                    </button>
+
+                    <UserButton />
+                  </div>
+                ) : (
+                  /* Logged Out View - Role-Specific Sign In / Sign Up Buttons */
+                  <div className="flex items-center gap-3">
+                    <button 
+                      onClick={() => openSignIn({ afterSignInUrl: '/', afterSignUpUrl: '/' })} 
+                      className="px-4 py-2 rounded-full font-semibold text-xs text-blue-600 border border-blue-600 hover:bg-blue-50 transition-all cursor-pointer shadow-2xs"
+                    >
+                      📖 Sign in / Sign up as Student
+                    </button>
+
+                    <button 
+                      onClick={() => openSignIn({ afterSignInUrl: '/educator', afterSignUpUrl: '/educator' })} 
+                      className="px-4 py-2 rounded-full font-semibold text-xs text-white bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-md hover:shadow-lg transition-all cursor-pointer"
+                    >
+                      🎓 Sign in / Sign up as Educator
                     </button>
                   </div>
                 )
@@ -107,19 +113,34 @@ const Navbar = () => {
 
           {/* Mobile View */}
           <div className='md:hidden flex items-center gap-2 text-slate-600 text-xs font-medium'> 
-            <Link to={user ? '/my-enrollments' : '/'} className="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-slate-100 border border-slate-200">
-              Student
-            </Link>
-            <button onClick={handleEducatorClick} className="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-indigo-600 text-white">
-              Educator
-            </button>
-            {user
-            ? <UserButton />
-            : <button onClick={() => openSignIn()} className="bg-blue-600 text-white px-3 py-1.5 rounded-full text-xs font-medium">
-                Sign In
-              </button>
-            }
+            {user ? (
+              <div className="flex items-center gap-2">
+                <Link to='/my-enrollments' className="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-slate-100 border border-slate-200">
+                  Enrollments
+                </Link>
+                <button onClick={handleEducatorClick} className="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-indigo-600 text-white">
+                  Educator
+                </button>
+                <UserButton />
+              </div>
+            ) : (
+              <div className="flex items-center gap-1.5 text-[11px]">
+                <button 
+                  onClick={() => openSignIn({ afterSignInUrl: '/', afterSignUpUrl: '/' })} 
+                  className="px-2.5 py-1 rounded-full font-semibold text-blue-600 border border-blue-200 bg-blue-50"
+                >
+                  Student
+                </button>
+                <button 
+                  onClick={() => openSignIn({ afterSignInUrl: '/educator', afterSignUpUrl: '/educator' })} 
+                  className="px-2.5 py-1 rounded-full font-semibold text-white bg-blue-600"
+                >
+                  Educator
+                </button>
+              </div>
+            )}
           </div>
+
       </nav>
 
       {/* Confirmation Modal for Student -> Educator Upgrade */}
