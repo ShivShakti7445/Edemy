@@ -16,9 +16,11 @@ const Navbar = () => {
         <img src={assets.logo} alt="Logo" className="w-28 lg:w-32" />
       </Link>
       <div className="flex items-center gap-5 text-gray-500 relative">
+        <Link to="/" className="text-sm font-medium text-blue-600 hover:underline">Student View</Link>
         <p>Hi! {user?user.fullName:'Developer'}</p>
         {user?<UserButton /> :<img className='max-w-8' src={assets.profile_img}/>}   
       </div>
+
     </div>
   );
 };
